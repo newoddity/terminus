@@ -600,7 +600,7 @@ class FeatureContext implements Context
     {
         $terminus_bin = getenv('TERMINUS_BIN') ?: 'bin/terminus';
         $regex        = '/(?<!\.)terminus/';
-        $command = preg_replace($regex, $terminus_bin, $command);
+        $command = preg_replace($regex, getcwd() . '/' . $terminus_bin, $command);
         $command = $this->replacePlaceholders($command);
 
         if (isset($this->connection_info['host'])) {
